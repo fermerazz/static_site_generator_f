@@ -1,8 +1,8 @@
 import unittest
 from textnode import TextType, TextNode
 from inline_markdown import extract_markdown_images, extract_markdown_links, split_nodes_image, split_nodes_link, text_to_textnodes
-from markdown_blocks import markdown_to_blocks, BlockType, block_to_block_type
-from main import markdown_to_html_node
+from markdown_blocks import markdown_to_blocks, BlockType, block_to_block_type, markdown_to_html_node
+
 
 class TestInlineMarkdown(unittest.TestCase):
 
