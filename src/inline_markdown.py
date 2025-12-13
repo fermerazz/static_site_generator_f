@@ -85,3 +85,11 @@ def text_to_textnodes(text):
     nodes = split_nodes_image(nodes)
     nodes = split_nodes_link(nodes)
     return nodes
+
+def extract_title(markdown):
+    lines = markdown.split("\n")
+    for line in lines:
+        if line.startswith("#") and (len(line) == 1 or line[1] != "#"):
+            title = line[1:].strip()
+            return title
+    raise Exception("No h1 title found")

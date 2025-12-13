@@ -1,6 +1,6 @@
 import unittest
 from textnode import TextType, TextNode
-from inline_markdown import extract_markdown_images, extract_markdown_links, split_nodes_image, split_nodes_link, text_to_textnodes
+from inline_markdown import extract_markdown_images, extract_markdown_links, split_nodes_image, split_nodes_link, text_to_textnodes, extract_title
 from markdown_blocks import markdown_to_blocks, BlockType, block_to_block_type, markdown_to_html_node
 
 
@@ -240,3 +240,10 @@ class TestBlockMarkdown(unittest.TestCase):
                 html,
                 "<div><pre><code>This is text that _should_ remain\nthe **same** even with inline stuff\n</code></pre></div>",
             )
+        def test_extract_title(self):
+            md = "# This is an h1 title"
+            self.assertEqual(extract_title(md), "This is an h1 title")
+        
+        def test_extract_title_no_title(self):
+            md = "This is just plain text"
+            self.assertRaises(Exception,extract_title, md)
